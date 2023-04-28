@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const MyHomePage(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -26,18 +27,22 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      // backgroundColor: Colors.black,
-      // body: LayoutBuilder(
-      //   builder: (BuildContext context, BoxConstraints constraints) {
-      //     if (constraints.maxWidth >= 600) {
-      //       return const DesktopView();
-      //     } else {
-      //       return const MobileView();
-      //     }
-      //   },
-      // ),
-      body: DesktopView(),
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body: LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+          // if (constraints.maxWidth >= 600) {
+          //   return const DesktopView();
+          // } else {
+          //   return const MobileView();
+          // }
+
+          return Container(
+            margin: const EdgeInsets.all(8),
+            child: const DesktopView(),
+          );
+        },
+      ),
     );
   }
 }

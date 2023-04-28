@@ -5,6 +5,6 @@ class MobileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(child: Text("Mobile"));
+    return Center(child: Text(MediaQuery.of(context).size.width.toString()));
   }
 }
