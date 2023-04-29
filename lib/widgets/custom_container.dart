@@ -14,13 +14,14 @@ class CustomContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Container(
       clipBehavior: Clip.hardEdge,
       width: double.maxFinite,
       height: double.maxFinite,
-      margin: const EdgeInsets.all(8),
+      margin: EdgeInsets.all(size.width * 0.00585),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(size.width * 0.0146),
         color: color,
       ),
       padding: padding,

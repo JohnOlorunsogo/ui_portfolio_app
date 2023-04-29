@@ -7,7 +7,7 @@ class Designer {
   final String noOfClients;
   final String about;
   final String picPath;
-  final String portfolioPath;
+  final List<dynamic> portfolioPath;
   final List<String> socials = [];
 
   Designer({
@@ -18,8 +18,17 @@ class Designer {
     this.noOfClients = '1',
     this.picPath = '',
     this.yearsExperience = '1',
-    this.portfolioPath = '',
+    required this.portfolioPath,
   });
 
-  Designer.fromJson(Map json) => Designer(about: json[]);
+  factory Designer.fromJson(Map json) => Designer(
+        about: json["About"],
+        name: json['name'],
+        location: json['Based in'],
+        handledProjects: json["handled projects"],
+        noOfClients: json["clients"],
+        picPath: json["path to pic"],
+        portfolioPath: json["paths to portfolio"],
+        yearsExperience: json["years of experience"],
+      );
 }
