@@ -14,32 +14,55 @@ class MobileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size.height;
-    return SingleChildScrollView(
-      child: SizedBox(
-        height: double.maxFinite,
-        child: ListView(
-          children: [
-            Menu(size: size),
-            TitleBar(size: size),
-            InfoBar(
-              designer: designer,
-              size: size,
-            ),
-            ExperienceBar(
-              designer: designer,
-              size: size,
-            ),
-            ShowCaseBar(
-              designer: designer,
-              size: size,
-            ),
-            AboutBar(
-              designer: designer,
-              size: size,
-            ),
-          ],
+    return ListView(
+      children: [
+        SizedBox(
+          height: 50,
+          child: Menu(
+            size: size,
+            mobileFactor: size,
+          ),
         ),
-      ),
+        SizedBox(
+          height: 160,
+          child: TitleBar(
+            size: size,
+            mobileFactor: size,
+          ),
+        ),
+        SizedBox(
+          height: 210,
+          child: InfoBar(
+            designer: designer,
+            size: size,
+            mobileFactor: size,
+          ),
+        ),
+        SizedBox(
+          height: 120,
+          child: ExperienceBar(
+            designer: designer,
+            size: size,
+            mobileFactor: size,
+          ),
+        ),
+        SizedBox(
+          height: 180,
+          child: ShowCaseBar(
+            designer: designer,
+            size: size,
+            mobileFactor: size,
+          ),
+        ),
+        SizedBox(
+          height: 260,
+          child: AboutBar(
+            designer: designer,
+            size: size,
+            mobileFactor: size,
+          ),
+        ),
+      ],
     );
   }
 }

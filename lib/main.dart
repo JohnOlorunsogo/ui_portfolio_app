@@ -3,9 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:ui_portfolio_app/model/designer.dart';
+import 'package:ui_portfolio_app/platform/desktop.dart';
 import 'package:ui_portfolio_app/platform/mobile.dart';
-
-import 'platform/desktop.dart';
 
 void main() {
   runApp(const MyApp());
@@ -53,16 +52,22 @@ class _MyHomePageState extends State<MyHomePage> {
           if (snapshot.hasData) {
             return LayoutBuilder(
               builder: (BuildContext context, BoxConstraints constraints) {
-                // if (constraints.maxWidth >= 600) {
-                //   return const DesktopView();
-                // } else {
-                //   return const MobileView();
-                // }
+                if (constraints.maxWidth >= 600) {
+                  return Container(
+                    margin: const EdgeInsets.all(8),
+                    child: DesktopView(designer: snapshot.data!),
+                  );
+                } else {
+                  return Container(
+                    margin: const EdgeInsets.all(8),
+                    child: MobileView(designer: snapshot.data!),
+                  );
+                }
 
-                return Container(
-                  margin: const EdgeInsets.all(8),
-                  child: MobileView(designer: snapshot.data!),
-                );
+                // return Container(
+                //   margin: const EdgeInsets.all(8),
+                //   child: MobileView(designer: snapshot.data!),
+                // );
               },
             );
           } else {

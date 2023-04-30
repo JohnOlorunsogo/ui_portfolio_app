@@ -7,20 +7,30 @@ class AboutBar extends StatelessWidget {
     super.key,
     required this.size,
     required this.designer,
+    this.mobileFactor,
   });
 
   final double size;
   final Designer designer;
+  final double? mobileFactor;
 
   @override
   Widget build(BuildContext context) {
     return CustomContainer(
-      padding: EdgeInsets.only(
-        top: size * 0.016,
-        left: size * 0.017,
-        right: size * 0.017,
-        bottom: size * 0.01,
-      ),
+      mobileFactor: mobileFactor,
+      padding: mobileFactor == null
+          ? EdgeInsets.only(
+              top: size * 0.016,
+              left: size * 0.017,
+              right: size * 0.017,
+              bottom: size * 0.01,
+            )
+          : EdgeInsets.only(
+              top: mobileFactor! * 0.017,
+              left: mobileFactor! * 0.02,
+              right: mobileFactor! * 0.02,
+              bottom: mobileFactor! * 0.02,
+            ),
       child: Column(
         children: [
           Row(
@@ -31,14 +41,18 @@ class AboutBar extends StatelessWidget {
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
-                  fontSize: 0.0138 * size,
+                  fontSize: mobileFactor == null
+                      ? 0.0138 * size
+                      : mobileFactor! * 0.024,
                 ),
               ),
               Text(
                 "Resume",
                 style: TextStyle(
                   color: Colors.white54,
-                  fontSize: 0.013 * size,
+                  fontSize: mobileFactor == null
+                      ? 0.0138 * size
+                      : mobileFactor! * 0.024,
                 ),
               ),
             ],
@@ -50,10 +64,14 @@ class AboutBar extends StatelessWidget {
             designer.about,
             style: TextStyle(
               overflow: TextOverflow.fade,
-              fontSize: 0.012 * size,
-              height: 0.00125 * size,
+              fontSize:
+                  mobileFactor == null ? 0.012 * size : mobileFactor! * 0.02,
+              height: mobileFactor == null
+                  ? 0.00125 * size
+                  : mobileFactor! * 0.0021,
               color: Colors.white70,
-              wordSpacing: 0.0051 * size,
+              wordSpacing:
+                  mobileFactor == null ? 0.0051 * size : mobileFactor! * 0.0034,
             ),
           ),
         ],

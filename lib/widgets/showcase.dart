@@ -8,15 +8,22 @@ class ShowCaseBar extends StatelessWidget {
     super.key,
     required this.size,
     required this.designer,
+    this.mobileFactor,
   });
 
   final double size;
   final Designer designer;
+  final double? mobileFactor;
 
   @override
   Widget build(BuildContext context) {
+    var sizedBox =
+        SizedBox(width: mobileFactor == null ? 20 : mobileFactor! * 0.02);
     return CustomContainer(
-      padding: EdgeInsets.all(size * 0.015),
+      mobileFactor: mobileFactor,
+      padding: mobileFactor == null
+          ? EdgeInsets.all(size * 0.015)
+          : EdgeInsets.all(mobileFactor! * 0.01667),
       child: Column(
         children: [
           Row(
@@ -27,7 +34,9 @@ class ShowCaseBar extends StatelessWidget {
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
-                  fontSize: 0.0138 * size,
+                  fontSize: mobileFactor == null
+                      ? 0.0138 * size
+                      : mobileFactor! * 0.02,
                 ),
               ),
               TextButton(
@@ -36,7 +45,9 @@ class ShowCaseBar extends StatelessWidget {
                   'See All',
                   style: TextStyle(
                     color: Colors.white54,
-                    fontSize: 0.013 * size,
+                    fontSize: mobileFactor == null
+                        ? 0.0138 * size
+                        : mobileFactor! * 0.02,
                   ),
                 ),
               ),
@@ -44,26 +55,34 @@ class ShowCaseBar extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           SizedBox(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              // mainAxisSize: MainAxisSize.min,
+            height:
+                mobileFactor == null ? size * 0.189 : mobileFactor! * 0.1389,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
               children: [
                 ImageContainer(
+                  mobileFactor: mobileFactor,
                   designer: designer,
                   size: size,
                   index: 0,
                 ),
+                sizedBox,
                 ImageContainer(
+                  mobileFactor: mobileFactor,
                   designer: designer,
                   size: size,
                   index: 1,
                 ),
+                sizedBox,
                 ImageContainer(
+                  mobileFactor: mobileFactor,
                   designer: designer,
                   size: size,
                   index: 2,
                 ),
+                sizedBox,
                 ImageContainer(
+                  mobileFactor: mobileFactor,
                   designer: designer,
                   size: size,
                   index: 1,

@@ -7,10 +7,12 @@ class ExperienceBar extends StatelessWidget {
     super.key,
     required this.designer,
     required this.size,
+    this.mobileFactor,
   });
 
   final Designer designer;
   final double size;
+  final double? mobileFactor;
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +20,7 @@ class ExperienceBar extends StatelessWidget {
       children: [
         Flexible(
           child: CustomContainer(
+            mobileFactor: mobileFactor,
             color: const Color(0xff00C399),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -26,7 +29,9 @@ class ExperienceBar extends StatelessWidget {
                   designer.yearsExperience,
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 0.025 * size,
+                    fontSize: mobileFactor == null
+                        ? 0.026 * size
+                        : mobileFactor! * 0.0417,
                     fontWeight: FontWeight.w800,
                   ),
                 ),
@@ -34,7 +39,9 @@ class ExperienceBar extends StatelessWidget {
                   'Years Experience',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 0.00878 * size,
+                    fontSize: mobileFactor == null
+                        ? 0.00878 * size
+                        : mobileFactor! * 0.016,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -44,6 +51,7 @@ class ExperienceBar extends StatelessWidget {
         ),
         Flexible(
           child: CustomContainer(
+            mobileFactor: mobileFactor,
             color: const Color(0xffFFC13C),
             child: Center(
               child: Column(
@@ -53,7 +61,9 @@ class ExperienceBar extends StatelessWidget {
                     designer.handledProjects,
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 0.025 * size,
+                      fontSize: mobileFactor == null
+                          ? 0.026 * size
+                          : mobileFactor! * 0.0417,
                       fontWeight: FontWeight.w800,
                     ),
                   ),
@@ -61,7 +71,9 @@ class ExperienceBar extends StatelessWidget {
                     'Handled Projects',
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 0.00878 * size,
+                      fontSize: mobileFactor == null
+                          ? 0.00878 * size
+                          : mobileFactor! * 0.016,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -72,16 +84,19 @@ class ExperienceBar extends StatelessWidget {
         ),
         Flexible(
           child: CustomContainer(
+            mobileFactor: mobileFactor,
             color: const Color(0xffFF6D7A),
             child: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    designer.handledProjects,
+                    designer.noOfClients,
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 0.025 * size,
+                      fontSize: mobileFactor == null
+                          ? 0.026 * size
+                          : mobileFactor! * 0.0417,
                       fontWeight: FontWeight.w800,
                     ),
                   ),
@@ -89,7 +104,9 @@ class ExperienceBar extends StatelessWidget {
                     'Clients',
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 0.00878 * size,
+                      fontSize: mobileFactor == null
+                          ? 0.00878 * size
+                          : mobileFactor! * 0.016,
                       fontWeight: FontWeight.w500,
                     ),
                   ),

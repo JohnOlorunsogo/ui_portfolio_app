@@ -7,10 +7,12 @@ class InfoBar extends StatelessWidget {
     super.key,
     required this.size,
     required this.designer,
+    this.mobileFactor,
   });
 
   final double size;
   final Designer designer;
+  final double? mobileFactor;
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +22,7 @@ class InfoBar extends StatelessWidget {
         Flexible(
           flex: 3,
           child: CustomContainer(
+            mobileFactor: mobileFactor,
             padding: EdgeInsets.zero,
             child: Image.asset('assets/img/cm2.jpeg', fit: BoxFit.cover),
           ),
@@ -32,8 +35,12 @@ class InfoBar extends StatelessWidget {
               Flexible(
                 flex: 1,
                 child: CustomContainer(
+                  mobileFactor: mobileFactor,
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: size * 0.00585),
+                    padding: mobileFactor == null
+                        ? EdgeInsets.symmetric(horizontal: size * 0.00585)
+                        : EdgeInsets.symmetric(
+                            horizontal: mobileFactor! * 0.00139),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -41,14 +48,18 @@ class InfoBar extends StatelessWidget {
                           'Name :',
                           style: TextStyle(
                             color: Colors.white54,
-                            fontSize: 0.0102 * size,
+                            fontSize: mobileFactor == null
+                                ? 0.0102 * size
+                                : mobileFactor! * 0.0153,
                           ),
                         ),
                         Text(
                           designer.name,
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 0.0102 * size,
+                            fontSize: mobileFactor == null
+                                ? 0.0102 * size
+                                : mobileFactor! * 0.0153,
                           ),
                         ),
                       ],
@@ -59,11 +70,14 @@ class InfoBar extends StatelessWidget {
               Flexible(
                 flex: 3,
                 child: CustomContainer(
+                  mobileFactor: mobileFactor,
                   padding: const EdgeInsets.all(0),
                   child: Column(
                     children: [
                       Padding(
-                        padding: EdgeInsets.all(size * 0.01318),
+                        padding: mobileFactor == null
+                            ? EdgeInsets.all(size * 0.01)
+                            : const EdgeInsets.all(10),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -71,14 +85,18 @@ class InfoBar extends StatelessWidget {
                               "Based In :",
                               style: TextStyle(
                                 color: Colors.white54,
-                                fontSize: 0.0102 * size,
+                                fontSize: mobileFactor == null
+                                    ? 0.0102 * size
+                                    : mobileFactor! * 0.0153,
                               ),
                             ),
                             Text(
                               designer.location,
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 0.0102 * size,
+                                fontSize: mobileFactor == null
+                                    ? 0.0102 * size
+                                    : mobileFactor! * 0.0153,
                               ),
                             ),
                           ],
@@ -97,31 +115,46 @@ class InfoBar extends StatelessWidget {
               Flexible(
                 flex: 1,
                 child: CustomContainer(
-                  padding: EdgeInsets.all(0.00732 * size),
+                  mobileFactor: mobileFactor,
+                  padding: mobileFactor == null
+                      ? EdgeInsets.all(0.00732 * size)
+                      : EdgeInsets.all(mobileFactor! * 0.00556),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [
+                    children: [
                       CircleAvatar(
+                        radius: mobileFactor == null
+                            ? 0.0202 * size
+                            : mobileFactor! * 0.02,
                         backgroundColor: Colors.black,
-                        backgroundImage: AssetImage(
+                        foregroundImage: const AssetImage(
                           'assets/img/linkedin.png',
                         ),
                       ),
                       CircleAvatar(
-                        foregroundColor: Colors.black,
-                        foregroundImage: AssetImage(
+                        radius: mobileFactor == null
+                            ? 0.0202 * size
+                            : mobileFactor! * 0.02,
+                        backgroundColor: Colors.black,
+                        foregroundImage: const AssetImage(
                           'assets/img/dribbble.png',
                         ),
                       ),
                       CircleAvatar(
+                        radius: mobileFactor == null
+                            ? 0.0202 * size
+                            : mobileFactor! * 0.02,
                         backgroundColor: Colors.black,
-                        backgroundImage: AssetImage(
+                        foregroundImage: const AssetImage(
                           'assets/img/insta.png',
                         ),
                       ),
                       CircleAvatar(
+                        radius: mobileFactor == null
+                            ? 0.0202 * size
+                            : mobileFactor! * 0.02,
                         backgroundColor: Colors.black,
-                        backgroundImage: AssetImage(
+                        foregroundImage: const AssetImage(
                           'assets/img/twitter.png',
                         ),
                       ),

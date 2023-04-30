@@ -5,23 +5,28 @@ class TitleBar extends StatelessWidget {
   const TitleBar({
     super.key,
     required this.size,
+    this.mobileFactor,
   });
 
   final double size;
+  final double? mobileFactor;
 
   @override
   Widget build(BuildContext context) {
     return CustomContainer(
+      mobileFactor: mobileFactor,
       child: Stack(
         children: [
           Padding(
-            padding: const EdgeInsets.all(7),
+            padding: const EdgeInsets.all(6),
             child: Text(
               // softWrap: true,
               "Bring Your Ideas To Life Through UI Design",
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 0.04 * size,
+                fontSize: mobileFactor == null
+                    ? (0.04 * size)
+                    : mobileFactor! * 0.0438,
                 fontWeight: FontWeight.w700,
                 overflow: TextOverflow.fade,
               ),
@@ -32,10 +37,16 @@ class TitleBar extends StatelessWidget {
               bottom: 4,
               child: GestureDetector(
                 child: Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                  padding: mobileFactor == null
+                      ? EdgeInsets.symmetric(
+                          horizontal: size * 0.0146, vertical: size * 0.00585)
+                      : EdgeInsets.symmetric(
+                          horizontal: mobileFactor! * 0.0208,
+                          vertical: mobileFactor! * 0.00972),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(18),
+                    borderRadius: mobileFactor == null
+                        ? BorderRadius.circular(size * 0.0132)
+                        : BorderRadius.circular(mobileFactor! * 0.0222),
                     color: Colors.purple,
                   ),
                   child: Row(
@@ -45,7 +56,9 @@ class TitleBar extends StatelessWidget {
                         'Hire Me',
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 0.0102 * size,
+                          fontSize: mobileFactor == null
+                              ? (0.01 * size)
+                              : mobileFactor! * 0.02,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
