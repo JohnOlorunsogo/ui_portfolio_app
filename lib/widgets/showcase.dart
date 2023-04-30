@@ -55,8 +55,7 @@ class ShowCaseBar extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           SizedBox(
-            height:
-                mobileFactor == null ? size * 0.189 : mobileFactor! * 0.1389,
+            height: mobileFactor == null ? size * 0.13 : mobileFactor! * 0.1389,
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: [
