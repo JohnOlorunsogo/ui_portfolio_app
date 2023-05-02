@@ -66,12 +66,9 @@ class AboutBar extends StatelessWidget {
               overflow: TextOverflow.fade,
               fontSize:
                   mobileFactor == null ? 0.012 * size : mobileFactor! * 0.02,
-              height: mobileFactor == null
-                  ? 0.00125 * size
-                  : mobileFactor! * 0.0021,
+              height: 0.00125 * size,
               color: Colors.white70,
-              wordSpacing:
-                  mobileFactor == null ? 0.0051 * size : mobileFactor! * 0.0034,
+              wordSpacing: 0.0051 * size,
             ),
           ),
         ],

@@ -52,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
           if (snapshot.hasData) {
             return LayoutBuilder(
               builder: (BuildContext context, BoxConstraints constraints) {
-                if (constraints.maxWidth >= 600) {
+                if (constraints.maxWidth >= 650) {
                   return Container(
                     margin: const EdgeInsets.all(8),
                     child: DesktopView(designer: snapshot.data!),

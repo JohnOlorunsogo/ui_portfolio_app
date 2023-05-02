@@ -117,46 +117,30 @@ class InfoBar extends StatelessWidget {
                 child: CustomContainer(
                   mobileFactor: mobileFactor,
                   padding: mobileFactor == null
-                      ? EdgeInsets.all(0.00732 * size)
+                      ? EdgeInsets.all(0.0071 * size)
                       : EdgeInsets.all(mobileFactor! * 0.00556),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      CircleAvatar(
-                        radius: mobileFactor == null
-                            ? 0.0202 * size
-                            : mobileFactor! * 0.02,
-                        backgroundColor: Colors.black,
-                        foregroundImage: const AssetImage(
-                          'assets/img/linkedin.png',
-                        ),
+                      SocialButton(
+                        mobileFactor: mobileFactor,
+                        size: size,
+                        img: 'assets/img/linkedin.png',
                       ),
-                      CircleAvatar(
-                        radius: mobileFactor == null
-                            ? 0.0202 * size
-                            : mobileFactor! * 0.02,
-                        backgroundColor: Colors.black,
-                        foregroundImage: const AssetImage(
-                          'assets/img/dribbble.png',
-                        ),
+                      SocialButton(
+                        mobileFactor: mobileFactor,
+                        size: size,
+                        img: 'assets/img/dribble.png',
                       ),
-                      CircleAvatar(
-                        radius: mobileFactor == null
-                            ? 0.0202 * size
-                            : mobileFactor! * 0.02,
-                        backgroundColor: Colors.black,
-                        foregroundImage: const AssetImage(
-                          'assets/img/insta.png',
-                        ),
+                      SocialButton(
+                        mobileFactor: mobileFactor,
+                        size: size,
+                        img: 'assets/img/insta.png',
                       ),
-                      CircleAvatar(
-                        radius: mobileFactor == null
-                            ? 0.0202 * size
-                            : mobileFactor! * 0.02,
-                        backgroundColor: Colors.black,
-                        foregroundImage: const AssetImage(
-                          'assets/img/twitter.png',
-                        ),
+                      SocialButton(
+                        mobileFactor: mobileFactor,
+                        size: size,
+                        img: 'assets/img/twitter.png',
                       ),
                     ],
                   ),
@@ -166,6 +150,38 @@ class InfoBar extends StatelessWidget {
           ),
         )
       ],
+    );
+  }
+}
+
+class SocialButton extends StatelessWidget {
+  const SocialButton({
+    super.key,
+    required this.mobileFactor,
+    required this.size,
+    required this.img,
+  });
+
+  final double? mobileFactor;
+  final double size;
+  final String img;
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      padding: const EdgeInsets.all(0),
+      splashRadius: 3,
+      onPressed: () {},
+      icon: CircleAvatar(
+        radius: mobileFactor == null ? 0.0202 * size : mobileFactor! * 0.02,
+        backgroundColor: Colors.white,
+        child: Padding(
+          padding: const EdgeInsets.all(3.0),
+          child: Image.asset(
+            img,
+          ),
+        ),
+      ),
     );
   }
 }

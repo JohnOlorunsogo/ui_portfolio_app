@@ -26,12 +26,14 @@ class _ImageContainerState extends State<ImageContainer> {
   Widget build(BuildContext context) {
     return Container(
       clipBehavior: Clip.hardEdge,
-      width: widget.mobileFactor == null
-          ? widget.size * 0.23
-          : widget.mobileFactor! * 0.14,
-      height: widget.mobileFactor == null
-          ? widget.size * 0.13
-          : widget.mobileFactor! * 0.14,
+      // width: widget.mobileFactor == null
+      //     ? widget.size * 0.23
+      //     : widget.mobileFactor! * 0.14,
+      // // height: widget.mobileFactor == null
+      // //     ? widget.size * 0.13
+      // //     : widget.mobileFactor! * 0.14,
+      width: double.maxFinite,
+      height: double.maxFinite,
       decoration: BoxDecoration(
         borderRadius: widget.mobileFactor == null
             ? BorderRadius.circular(widget.size * 0.0146)
